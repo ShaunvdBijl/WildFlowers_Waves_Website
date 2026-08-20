@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
-const connectDB = require('./config/db');
+const connectDB = require('./config/db.js');
 
 const productRoutes = require('./routes/products');
 const contactRoutes = require('./routes/contact');
