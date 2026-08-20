@@ -1,0 +1,47 @@
+/* frontend/src/assets/brand.css */
+
+:root {
+  /* --- BEIGE PALETTE (Main Page Colours) --- */
+  /* Beige should always be the main colour of the page to make it inviting and soft. */
+  --color-beige-main: #FAF8EB;
+  --color-beige-light: #FFFEFA;
+  --color-beige-dark: #E3E2DE;
+
+  /* --- BLUE PALETTE --- */
+  --color-blue-primary: #1351AA;
+  --color-blue-bright: #1E67D0;
+  --color-blue-deep: #083B83;
+
+  /* --- DARK BLUE / BLACK PALETTE --- */
+  --color-dark-blue: #052655;
+  --color-midnight: #03162F;
+  --color-black: #000000;
+
+  /* --- ACCENT --- */
+  /* Used for a bit of sparkle and contrast in designs, branding, and packaging[cite: 1]. */
+  --color-silver: #283838; 
+
+  /* --- TYPOGRAPHY --- */
+  /* Typewriter Basix is used for Headings, Titles and Important Information[cite: 1]. */
+  --font-heading: 'Typewriter Basix', monospace;
+  /* Montserrat is used for Body text, Important Readable text and all other text[cite: 1]. */
+  --font-body: 'Montserrat', sans-serif;
+}
+
+/* --- BASE STYLES --- */
+body {
+  background-color: var(--color-beige-main);
+  color: var(--color-black);
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, h4, h5, h6, .brand-highlight {
+  font-family: var(--font-heading);
+  color: var(--color-midnight);
+}
+
+/* Icons should be black and white with rounded corners for a soft, smooth finish[cite: 1]. */
+.brand-icon {
+  color: var(--color-black);
+  border-radius: 8px; 
+}

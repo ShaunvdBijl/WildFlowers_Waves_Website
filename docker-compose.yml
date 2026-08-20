@@ -16,13 +16,13 @@ services:
   backend:
     build:
       context: ./backend
-      dockerfile: Dockerfile
+      dockerfile: Backend.Dockerfile
     container_name: ww-backend
     restart: unless-stopped
     ports:
       - '5000:5000'
     env_file:
-      - ./backend/.env
+      - ./backend/.env.backend
     environment:
       - MONGO_URI=mongodb://mongo:27017/wildflowersandwaves
     depends_on:
@@ -36,13 +36,13 @@ services:
   frontend:
     build:
       context: ./frontend
-      dockerfile: Dockerfile
+      dockerfile: Frontend.Dockerfile
     container_name: ww-frontend
     restart: unless-stopped
     ports:
       - '3000:3000'
     env_file:
-      - ./frontend/.env
+      - ./frontend/.env.frontend
     environment:
       - REACT_APP_API_URL=http://localhost:5000/api
     depends_on:

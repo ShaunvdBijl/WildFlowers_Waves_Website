@@ -1,0 +1,197 @@
+/* Intended path: /frontend/src/index.css */
+
+/* ---------- Brand fonts ----------
+   "Typewriter Basix" is the decorative/main font used for headings & the logo.
+   It is not a free Google font - download it from the license link in the brand
+   guide and drop the files into /frontend/src/assets/fonts/, then this @font-face
+   block will pick it up. Montserrat (body font) loads from Google Fonts below. */
+@font-face {
+  font-family: 'Typewriter Basix';
+  src: url('./assets/fonts/TypewriterBasiX-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap; 
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+/* ---------- Brand color palette ---------- */
+:root {
+  --beige-main: #faf8eb;
+  --beige-alt: #fffefa;
+  --beige-outline: #e3e2de;
+
+  --blue-light: #1e67d0;
+  --blue-main: #1351aa;
+  --blue-dark: #083b83;
+  --dark-blue: #052655;
+
+  --black-blue: #03162f;
+  --black: #000000;
+  --grey-silver: #838383;
+
+  --font-heading: 'Typewriter Basix', 'Courier New', monospace;
+  --font-body: 'Montserrat', sans-serif;
+
+  --radius-pill: 999px;
+  --radius-soft: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--beige-main);
+  color: var(--black-blue);
+  font-family: var(--font-body);
+  scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  color: var(--blue-main);
+  margin: 0 0 0.5em 0;
+  line-height: 1.05;
+}
+
+p {
+  line-height: 1.6;
+  color: var(--black-blue);
+}
+
+a {
+  color: var(--blue-main);
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ---------- Layout helpers ---------- */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section {
+  padding: 64px 0;
+}
+
+.section-dark {
+  background-color: var(--blue-main);
+  color: var(--beige-main);
+}
+
+.section-dark h1,
+.section-dark h2,
+.section-dark h3 {
+  color: var(--beige-alt);
+}
+
+.section-dark p {
+  color: var(--beige-outline);
+}
+
+.grid {
+  display: grid;
+  gap: 24px;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+/* ---------- Buttons (pill shaped, matches proposal's outlined-pill style) ---------- */
+.btn {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 14px 28px;
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--blue-main);
+  background: transparent;
+  color: var(--blue-main);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  background: var(--blue-main);
+  color: var(--beige-alt);
+}
+
+.btn-solid {
+  background: var(--blue-main);
+  color: var(--beige-alt);
+}
+
+.btn-solid:hover {
+  background: var(--dark-blue);
+  border-color: var(--dark-blue);
+}
+
+/* ---------- Cards (rounded, soft finish per "Icons" & imagery guidance) ---------- */
+.card {
+  background: var(--beige-alt);
+  border: 1px solid var(--beige-outline);
+  border-radius: var(--radius-soft);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(3, 22, 47, 0.12);
+}
+
+.card-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+/* ---------- Forms ---------- */
+input,
+textarea {
+  font-family: var(--font-body);
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--beige-outline);
+  border-radius: 10px;
+  background: var(--beige-alt);
+  color: var(--black-blue);
+  margin-bottom: 16px;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--blue-light);
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--dark-blue);
+}
