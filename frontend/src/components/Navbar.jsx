@@ -1,5 +1,7 @@
+// Intended path: /frontend/src/components/Navbar.jsx
 import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 const navLinks = [
   { label: 'Home', path: '/' },
@@ -15,6 +17,13 @@ const socials = [
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { firebaseUser, profile, signOutUser } = useAuth();
+  const navigate = useNavigate();
+
+  const handleSignOut = async () => {
+    await signOutUser();
+    navigate('/');
+  };
 
   return (
     <header
@@ -68,9 +77,27 @@ export default function Navbar() {
               {s.label[0]}
             </a>
           ))}
-          <Link to="/login" className="btn" style={{ padding: '8px 18px' }}>
-            Log In
-          </Link>
+          {!firebaseUser ? (
+            <Link to="/signup" className="btn" style={{ padding: '8px 18px' }}>
+              Sign Up
+            </Link>
+          ) : (
+            <>
+              <Link
+                to={profile?.role === 'admin' ? '/admin' : '/dashboard'}
+                className="btn"
+                style={{ padding: '8px 18px' }}
+              >
+                {profile?.role === 'admin' ? 'Admin' : 'Dashboard'}
+              </Link>
+              <button
+                onClick={handleSignOut}
+                style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--black-blue)' }}
+              >
+                Log Out
+              </button>
+            </>
+          )}
           <button
             className="mobile-menu-btn"
             onClick={() => setMenuOpen((prev) => !prev)}
