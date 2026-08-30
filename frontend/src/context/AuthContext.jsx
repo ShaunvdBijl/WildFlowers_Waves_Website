@@ -6,7 +6,7 @@
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
-import { auth } from '../firebase';
+import { auth } from '../services/firebase';
 import { syncUserProfile, getMyProfile } from '../services/api';
 
 const AuthContext = createContext(null);

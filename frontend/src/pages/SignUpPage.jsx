@@ -12,7 +12,7 @@ import {
   signInWithPopup,
   updateProfile,
 } from 'firebase/auth';
-import { auth, googleProvider } from '../firebase';
+import { auth, googleProvider } from '../services/firebase';
 
 export default function SignUpPage() {
   const navigate = useNavigate();
