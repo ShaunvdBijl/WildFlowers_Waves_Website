@@ -1,0 +1,5 @@
+.env.frontend
+.env.backend
+serviceAccountKey.json
+*.json
+.env*
