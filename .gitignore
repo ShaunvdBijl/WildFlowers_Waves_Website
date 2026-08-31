@@ -1,5 +1,3 @@
-.env.frontend
-.env.backend
-serviceAccountKey.json
-*.json
+node_modules/
 .env*
+serviceAccountKey.json
