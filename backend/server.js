@@ -9,8 +9,8 @@ const productRoutes = require('./routes/products');
 const contactRoutes = require('./routes/contact');
 const userRoutes = require('./routes/users');
 const orderRoutes = require('./routes/orders');
-const adminOrderRoutes = require('./routes/adminOrders');
-const adminGalleryRoutes = require('./routes/adminGallery');
+const adminOrderRoutes = require('./routes/admin-orders');
+const adminGalleryRoutes = require('./routes/admin-gallery');
 
 const app = express();
 
