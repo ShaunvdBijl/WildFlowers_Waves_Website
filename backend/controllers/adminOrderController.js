@@ -1,14 +1,12 @@
-// Intended path: /backend/routes/adminOrders.js
-const express = require('express');
-const router = express.Router();
-const requireAuth = require('../middleware/auth');
-const requireRole = require('../middleware/role');
+// Intended path: /backend/controllers/adminOrderController.js
 const Order = require('../models/Order');
 
-// @route   GET /api/admin/orders
+const ALLOWED_STATUSES = ['pending', 'accepted', 'declined', 'completed'];
+
 // @desc    Fetch all orders, with client name/email populated, for admin review
+// @route   GET /api/admin/orders
 // @access  Private (admin only)
-router.get('/orders', requireAuth, requireRole('admin'), async (req, res) => {
+exports.getAllOrders = async (req, res) => {
   try {
     const filter = {};
     if (req.query.status) filter.status = req.query.status;
@@ -21,18 +19,17 @@ router.get('/orders', requireAuth, requireRole('admin'), async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: 'Error fetching orders', error: error.message });
   }
-});
+};
 
-// @route   PATCH /api/admin/orders/:id/status
 // @desc    Accept, decline, or complete a client's order
+// @route   PATCH /api/admin/orders/:id/status
 // @access  Private (admin only)
-router.patch('/orders/:id/status', requireAuth, requireRole('admin'), async (req, res) => {
+exports.updateOrderStatus = async (req, res) => {
   try {
     const { status } = req.body;
-    const allowedStatuses = ['pending', 'accepted', 'declined', 'completed'];
 
-    if (!allowedStatuses.includes(status)) {
-      return res.status(400).json({ message: `Status must be one of: ${allowedStatuses.join(', ')}` });
+    if (!ALLOWED_STATUSES.includes(status)) {
+      return res.status(400).json({ message: `Status must be one of: ${ALLOWED_STATUSES.join(', ')}` });
     }
 
     const order = await Order.findByIdAndUpdate(req.params.id, { status }, { new: true }).populate(
@@ -48,6 +45,4 @@ router.patch('/orders/:id/status', requireAuth, requireRole('admin'), async (req
   } catch (error) {
     res.status(400).json({ message: 'Error updating order status', error: error.message });
   }
-});
-
-module.exports = router;
+};
