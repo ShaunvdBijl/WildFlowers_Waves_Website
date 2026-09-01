@@ -6,7 +6,7 @@
 // (never commit the JSON key file) before deploying.
 
 const admin = require('firebase-admin');
-
+const path = require('path');
 let initialized = false;
 
 function initFirebaseAdmin() {
