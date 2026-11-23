@@ -11,6 +11,9 @@ export const getProducts = (category) =>
 export const getProductById = (idOrSlug) =>
   api.get(`/products/${idOrSlug}`).then((res) => res.data);
 
+export const getGalleryItems = (category) =>
+  api.get('/gallery', { params: category ? { category } : {} }).then((res) => res.data);
+
 export const submitContactForm = (formData) =>
   api.post('/contact', formData).then((res) => res.data);
 

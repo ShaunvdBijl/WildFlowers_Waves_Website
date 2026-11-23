@@ -78,9 +78,14 @@ export default function Navbar() {
             </a>
           ))}
           {!firebaseUser ? (
-            <Link to="/signup" className="btn" style={{ padding: '8px 18px' }}>
-              Sign Up
-            </Link>
+            <>
+              <Link to="/login" style={{ fontWeight: 600, color: 'var(--black-blue)' }}>
+                Log In
+              </Link>
+              <Link to="/signup" className="btn" style={{ padding: '8px 18px' }}>
+                Sign Up
+              </Link>
+            </>
           ) : (
             <>
               <Link

@@ -1,6 +1,8 @@
 // Intended path: /backend/routes/products.js
 const express = require('express');
 const router = express.Router();
+const requireAuth = require('../middleware/auth');
+const requireRole = require('../middleware/role');
 const {
   getProducts,
   getProductByIdOrSlug,
@@ -11,8 +13,8 @@ const {
 
 router.get('/', getProducts);
 router.get('/:idOrSlug', getProductByIdOrSlug);
-router.post('/', createProduct);
-router.put('/:id', updateProduct);
-router.delete('/:id', deleteProduct);
+router.post('/', requireAuth, requireRole('admin'), createProduct);
+router.put('/:id', requireAuth, requireRole('admin'), updateProduct);
+router.delete('/:id', requireAuth, requireRole('admin'), deleteProduct);
 
 module.exports = router;

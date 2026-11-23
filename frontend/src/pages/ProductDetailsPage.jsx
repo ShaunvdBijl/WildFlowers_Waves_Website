@@ -89,9 +89,13 @@ export default function ProductDetailsPage() {
               <p>{product.careDetails}</p>
             </div>
 
-            <button className="btn btn-solid" style={{ marginTop: 24 }}>
+            <Link
+              to={`/contact?product=${encodeURIComponent(product.name)}`}
+              className="btn btn-solid"
+              style={{ marginTop: 24, display: 'inline-block' }}
+            >
               Enquire About This Piece
-            </button>
+            </Link>
           </div>
         </div>
       </div>
