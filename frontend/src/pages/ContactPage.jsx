@@ -1,11 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { submitContactForm } from '../services/api';
 
 const initialForm = { firstName: '', lastName: '', email: '', phone: '', message: '' };
 
 export default function ContactPage() {
+  const [searchParams] = useSearchParams();
+  const productName = searchParams.get('product');
   const [form, setForm] = useState(initialForm);
   const [status, setStatus] = useState({ state: 'idle', message: '' });
+
+  useEffect(() => {
+    if (productName) {
+      setForm((prev) => ({
+        ...prev,
+        message: prev.message || `Hi, I would like to enquire about "${productName}".`,
+      }));
+    }
+  }, [productName]);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });

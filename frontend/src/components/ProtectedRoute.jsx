@@ -16,7 +16,7 @@ export default function ProtectedRoute({ children, role }) {
   }
 
   if (!firebaseUser) {
-    return <Navigate to="/signup" replace />;
+    return <Navigate to="/login" replace />;
   }
 
   if (role && profile?.role !== role) {
